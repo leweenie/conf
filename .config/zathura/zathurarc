@@ -1,0 +1,7 @@
+set window-title-basename "true"
+set selection-clipboard "clipboard"
+
+set font "Terminess Nerd Font 12"
+
+set adjust-open "best-fit"
+set recolor true

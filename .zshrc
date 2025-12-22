@@ -1,0 +1,74 @@
+#================
+#### PLUGINS ####
+#================
+
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
+if [ ! -d "$ZINIT_HOME" ]; then
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit "$ZINIT_HOME"
+fi
+
+source "${ZINIT_HOME}/zinit.zsh"
+
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+
+autoload -U compinit && compinit
+
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+#================
+#### ALIASES ####
+#================
+
+alias vi='nvim'
+# alias f='fastfetch -s os:host:kernel:uptime:packages:shell:display:wm:cpu:gpu:memory:disk:localip --logo none';
+alias f='fastfetch';
+alias so='source ~/.zshrc'
+alias ls='ls --color=auto --format=across'
+# alias ls='ls --color=auto --format=single-column'
+
+alias update='sudo pacman -Syu; yay -Syu'
+alias cleanup='sudo pacman -Scc; yay -Scc'
+
+alias opr=$HOME/.scripts/github.sh
+alias notes='mkdir -p $HOME/school-notes/ && cd $HOME/school-notes/ && nvim .'
+alias lt='tree -C'
+alias ts='$HOME/.scripts/tmux-sessionizer.sh'
+alias get-new-mirrors='reflector --country Canada --latest 20 --sort rate --save /etc/pacman.d/mirrorlist'
+
+osage() {
+    echo "$(( ($(date +%s) - $(stat -c %Y /etc/os-release)) / 86400 )) days"
+}
+
+
+cd() {
+  case "$1" in
+    .2) builtin cd ../.. ;;
+    .3) builtin cd ../../.. ;;
+    .4) builtin cd ../../../.. ;;
+    .5) builtin cd ../../../../.. ;;
+    *)  builtin cd "$@" ;;
+  esac
+}
+
+#============
+#### ENV ####
+#============
+
+PS1="%{$fg[green]%}%n@%m:%{$fg[cyan]%}%~%{$reset_color%}\$ "
+export MANPAGER='nvim +Man!'
+export PATH="$HOME/.scripts:$PATH"

@@ -1,0 +1,47 @@
+[window]
+opacity = 0.96
+
+[font]
+size = 9
+normal.family = "firacode nerd font"
+bold.family = "firacode nerd font"
+italic.family = "firacode nerd font"
+
+
+[colors.primary]
+background = "#161412"
+foreground = "#DDDDDD"
+
+[colors.normal]
+black   = "#000000"
+red     = "#CC0403"
+green   = "#23FD00"
+yellow  = "#FFFD00"
+blue    = "#0D73CC"
+magenta = "#CB1ED1"
+cyan    = "#14FFFF"
+white   = "#DDDDDD"
+
+[colors.bright]
+black   = "#767676"
+red     = "#F2201F"
+green   = "#23FD00"
+yellow  = "#FFFD00"
+blue    = "#1A8FFF"
+magenta = "#FD28FF"
+cyan    = "#14FFFF"
+white   = "#FFFFFF"
+
+[colors.selection]
+background = "#4b4c4d"
+text = "#FFFFFF"
+
+[colors.cursor]
+# background = "#2596be"
+background = "#DDDDDD"
+
+[keyboard]
+bindings = [
+    { key="K", mods="Control|Shift", action="ScrollLineUp" },
+    { key="J", mods="Control|Shift", action="ScrollLineDown" }
+]

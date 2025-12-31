@@ -1,48 +1,68 @@
-local terminal_state = {
-    buf = nil,
-    win = nil,
-    is_open = false,
-    job_id = nil
+local valid_types = {
+    cpp = true,
+    rust = true,
+    python = true,
+    java = true,
+    javascript = true,
+    c = true,
+    terminal = true,
 }
 
-local function close_terminal()
-    if terminal_state.is_open and terminal_state.win and vim.api.nvim_win_is_valid(terminal_state.win) then
-        vim.api.nvim_win_close(terminal_state.win, false)
-        terminal_state.is_open = false
-    end
-end
+local terminal_state = {
+    winid = nil,
+    bufnr = nil,
+}
 
-local function open_terminal()
-    local current_file = vim.api.nvim_buf_get_name(0)
-    local file_dir = vim.fn.fnamemodify(current_file, ':p:h')
+vim.api.nvim_create_autocmd("WinClosed", {
+    callback = function(args)
+        if tonumber(args.match) == terminal_state.winid then
+            terminal_state.winid = nil
+        end
+    end,
+})
 
-    terminal_state.buf = vim.api.nvim_create_buf(false, true)
-    vim.bo[terminal_state.buf].bufhidden = 'hide'
-
-    vim.cmd('botright split')
-    terminal_state.win = vim.api.nvim_get_current_win()
-    vim.api.nvim_win_set_buf(terminal_state.win, terminal_state.buf)
-    vim.api.nvim_win_set_height(terminal_state.win, math.floor(vim.o.lines * 0.3))
-
-    terminal_state.job_id = vim.fn.termopen(os.getenv("SHELL"), { cwd = file_dir })
-    terminal_state.is_open = true
-    vim.cmd("startinsert")
-
-    vim.api.nvim_create_autocmd("BufLeave", {
-        buffer = terminal_state.buf,
-        callback = close_terminal,
-        once = true
-    })
-end
-
-vim.keymap.set("n", "<A-\\>", function()
-    if terminal_state.is_open then
-        close_terminal()
+local function toggle_terminal()
+    if terminal_state.winid
+        and vim.api.nvim_win_is_valid(terminal_state.winid)
+    then
+        vim.api.nvim_win_close(terminal_state.winid, true)
+        terminal_state.winid = nil
         return
     end
 
-    vim.cmd('write')
-    open_terminal()
-end, {})
+    local height = vim.api.nvim_win_get_height(0)
+    vim.cmd("split")
+    vim.cmd("resize " .. math.floor(height / 3))
 
-vim.keymap.set("t", "<A-\\>", close_terminal, { desc = "Close terminal" })
+    terminal_state.winid = vim.api.nvim_get_current_win()
+
+    if terminal_state.bufnr
+        and vim.api.nvim_buf_is_valid(terminal_state.bufnr)
+    then
+        vim.api.nvim_win_set_buf(0, terminal_state.bufnr)
+    else
+        vim.cmd("terminal")
+        terminal_state.bufnr = vim.api.nvim_get_current_buf()
+    end
+
+    vim.cmd("startinsert")
+end
+
+local modes = { "n", "i", "t" }
+
+vim.keymap.set(modes, "<A-\\>", function()
+    local mode  = vim.api.nvim_get_mode().mode
+    local ftype = vim.bo.filetype
+    local btype = vim.bo.buftype
+
+    if not (valid_types[ftype] or valid_types[btype]) then
+        print("invalid type: cannot open terminal")
+        return
+    end
+
+    if mode ~= "n" then
+        vim.cmd("stopinsert")
+    end
+
+    toggle_terminal()
+end, { silent = true })

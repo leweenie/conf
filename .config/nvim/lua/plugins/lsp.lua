@@ -1,6 +1,11 @@
 return {
     {
+        "nvim-java/nvim-java",
+        enabled = false,
+    },
+    {
         "neovim/nvim-lspconfig",
+        priority = 1,
         dependencies = { "saghen/blink.cmp" },
         config = function()
             local capabilities = require('blink.cmp').get_lsp_capabilities()
@@ -13,10 +18,13 @@ return {
             vim.lsp.config("tinymist", { capabilities = capabilities })
 
             vim.lsp.enable({
+                "cssls",
+                "superhtml",
+                "bashls",
                 "lua_ls",
                 "jdtls",
                 "gopls",
-                "jsonld-lsp",
+                "jsonld_lsp",
                 "clangd",
                 "ts_ls",
                 "rust_analyzer",
@@ -25,8 +33,16 @@ return {
             })
 
             vim.diagnostic.config({
-                virtual_text = true,
-                signs = false,
+                virtual_text = false,
+                signs = {
+                    text = {
+                        [vim.diagnostic.severity.ERROR] = '▎',
+                        [vim.diagnostic.severity.WARN] = '▎',
+                        [vim.diagnostic.severity.HINT] = '▎',
+                        [vim.diagnostic.severity.INFO] = '▎',
+                    },
+                }
+                ,
                 underline = false,
                 update_in_insert = false,
                 float = {
@@ -73,11 +89,29 @@ return {
                     show_on_blocked_trigger_characters = {},
                     show_on_x_blocked_trigger_characters = {},
                 },
+                ghost_text = {
+                    enabled = false,
+                },
+                documentation = {
+                    auto_show = true,
+                    auto_show_delay_ms = 200,
+                    window = {
+                        min_width = 10,
+                        max_width = 80,
+                        max_height = 15,
+                        border = 'single',
+                        winblend = 0,
+                        scrollbar = true,
+                    },
+                },
                 menu = {
                     auto_show = true,
                     auto_show_delay_ms = 0,
-                    border = 'none',
-                    winblend = 15,
+                    border = 'single',
+
+                    winhighlight =
+                    'Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None',
+                    winblend = 0,
                     scrollbar = false,
                 },
                 list = {
@@ -102,5 +136,5 @@ return {
                 }
             }
         }
-    }
+    },
 }

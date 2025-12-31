@@ -36,13 +36,16 @@ end)
 map("n", "<C-n>", function()
     vim.diagnostic.jump({ count = 1, float = true })
 end)
-map("n", "<C-p>", function()
+map("n", "<C-S-n>", function()
     vim.diagnostic.jump({ count = -1, float = true })
 end)
 
 -- navigating long warpped sentences / lines
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- close all
+vim.cmd("cnoreabbrev q qa")
 
 -- typst preview
 map("n", "<leader>tp", ":TypstPreview<CR>", opts)
@@ -53,7 +56,7 @@ map("n", "<leader>bf", function()
 end, opts)
 
 -- toggle lsp text
-local text_on = true
+local text_on = false
 map("n", "<leader>lt", function()
     text_on = not text_on
     vim.diagnostic.config({ virtual_text = text_on })
@@ -67,6 +70,7 @@ end)
 -- exit term mode
 map('t', "<esc><esc>", "<C-\\><C-N>", opts)
 
+-- toggle cmdheight
 local flag = true
 map('n', "<C-S-Up>", function()
     flag = not flag
@@ -79,3 +83,25 @@ end, opts)
 
 -- duplicate line/selection down
 map({ 'n', 'v' }, '<A-S-j>', ":t.<cr>", opts)
+
+-- toggle undotree
+map('n', '<leader>u', ":UndotreeToggle<cr>", opts)
+
+-- clear hlsearch
+map('n', '<C-l>', ":noh<cr>", opts)
+
+-- toggle number
+local flag = false
+map('n', "<leader>ln", function()
+    flag = not flag
+    if flag then
+        vim.opt.number = false
+    else
+        vim.opt.number = true
+    end
+end, opts)
+
+-- toggle nvimtree
+vim.keymap.set("n", "<C-p>", function()
+    vim.cmd("NvimTreeFindFileToggle")
+end, opts)

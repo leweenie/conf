@@ -1,69 +1,14 @@
 return {
+    { "tpope/vim-surround",    enabled = true, config = function() end, },
+    { 'mbbill/undotree',       enabled = true },
+    { "windwp/nvim-autopairs", enabled = true, dependencies = { { "echasnovski/mini.icons", opts = {} } }, event = "InsertEnter", config = true, },
     {
-        "windwp/nvim-autopairs",
+        "j-hui/fidget.nvim",
         enabled = true,
-        dependencies = { { "echasnovski/mini.icons", opts = {} } },
-        event = "InsertEnter",
-        config = true,
-    },
-    {
-        "tpope/vim-surround",
-        config = function() end,
-    },
-    {
-        "nvim-java/nvim-java",
-        enabled = true,
-    },
-
-    {
-        "utilyre/barbecue.nvim",
-        enabled = true,
-        name = "barbecue",
-        version = "*",
-        dependencies = {
-            "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons",
-        },
-        opts = {},
         config = function()
-            require("barbecue").setup({
-                theme = {
-                    normal = { bg = "NONE" },
-                    ellipsis = { bg = "NONE" },
-                    separator = { bg = "NONE" },
-                    modified = { bg = "NONE" },
-                    dirname = { bg = "NONE" },
-                    basename = { bg = "NONE" },
-                    context = { bg = "NONE" },
-                },
-            })
-
-            local function clear_barbecue_highlights()
-                for _, group in ipairs({
-                    "BarbecueNormal",
-                    "BarbecueEllipsis",
-                    "BarbecueSeparator",
-                    "BarbecueModified",
-                    "BarbecueDirname",
-                    "BarbecueBasename",
-                    "BarbecueContext",
-                }) do
-                    vim.api.nvim_set_hl(0, group, { bg = "NONE" })
-                end
-                vim.cmd([[
-              highlight WinBar        guibg=NONE
-              highlight WinBarNC      guibg=NONE
-              highlight TabLineFill   guibg=NONE
-            ]])
-            end
-
-            vim.api.nvim_create_augroup("TransparentBarbecue", { clear = true })
-            vim.api.nvim_create_autocmd("ColorScheme", {
-                group = "TransparentBarbecue",
-                callback = clear_barbecue_highlights,
-            })
-
-            clear_barbecue_highlights()
+            require("fidget").setup({ notification = { window = { winblend = 0, normal_hl = "Normal", zindex = 1, }, }, })
+            vim.api.nvim_set_hl(0, "FidgetTask", { bg = "NONE" })
+            vim.api.nvim_set_hl(0, "FidgetTitle", { bg = "NONE" })
         end,
     },
 }

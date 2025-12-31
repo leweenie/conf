@@ -9,7 +9,10 @@ return {
                 'fzf-vim',
                 winopts = {
                     backdrop = 80,
-                    border = 'single'
+                    border = 'single',
+                    preview = {
+                        hidden = true
+                    }
                 },
                 keymap = {
                     builtin = {
@@ -33,6 +36,7 @@ return {
             vim.keymap.set('n', '<leader>fc', function() require('fzf-lua').files({ cwd = '$HOME/.config/nvim' }) end,
                 opts)
             vim.keymap.set('n', '<leader>f.', function() require('fzf-lua').files({}) end, opts)
+            vim.keymap.set('n', '<leader>fb', function() require('fzf-lua').buffers({}) end, opts)
         end
     }
 }

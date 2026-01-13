@@ -1,0 +1,66 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "terminess nerd font";
+    min-height: 0;
+    font-size: 12px;
+    color: #f3f3f3;
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 1);
+}
+
+.modules-right {
+    margin-right: 3px;
+}
+
+#battery.critical {
+    color: red;
+}
+
+#battery.charging {
+    color: #f3f3f3;
+}
+
+#custom-sep {
+    color: #606060;
+}
+
+#network.wifi {
+    color: #09F504;
+}
+
+#network.wifi.weak {
+    color: red;
+}
+
+#network.wifi.medium {
+    color: #f1fa8c;
+}
+
+#network.disconnected {
+    color: red;
+}
+
+#workspaces button {
+    margin: 0;
+}
+
+#workspaces button.hover {
+    background-color: transparent;
+    margin: 0;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    margin: 0;
+    padding-top: 1px;
+}
+
+#workspaces button.active {
+    background-color: #285577;
+    border-radius: 0;
+    border: 1px solid #4c7899;
+}

@@ -1,0 +1,92 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 10,
+  "spacing": 4,
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "network",
+    "custom/sep",
+    "memory",
+    "custom/sep",
+    "cpu",
+    "custom/sep",
+    "battery",
+    "custom/sep",
+    "clock",
+    "custom/power"
+  ],
+  // https://github.com/Alexays/Waybar/issues/4059
+  "hyprland/workspaces": {
+      "disable-scroll": false,
+      "all-outputs": true,
+  },
+  "custom/sep": {
+      "format": "|"
+  },
+  "tray": {
+    "spacing": 10
+  },
+  "clock": {
+    "interval": 3,
+    "tooltip": false,
+        "format": "{:%a %d - %I:%M}"
+  },
+  "memory": {
+    "interval": 3,
+    "format": "mem: {}%"
+  },
+  // cpu
+  "cpu": {
+    "interval": 3,
+    "format": "cpu: {usage}%",
+    "tooltip": false
+  },
+  "battery": {
+    "interval": 3,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "bat: {capacity}",
+    "format-full": "full: {capacity}%",
+    "format-charging": "chr: {capacity}%",
+    "format-plugged": "chr: {capacity}%",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "battery#bat2": {
+    "interval": 3,
+    "bat": "BAT2"
+  },
+  "network": {
+    "interval": 3,
+    "format-wifi": "net: {essid} ({signalStrength}%)",
+    "format-ethernet": "{ipaddr}/{cidr}",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "format-linked": "{ifname} (No IP)",
+    "format-disconnected": "net: down",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  },
+  "pulseaudio": {
+    "interval": 3,
+    "format": "{volume}% {format_source}",
+    "format-bluetooth": "{volume}%  {format_source}",
+    "format-bluetooth-muted": "  {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol"
+  },
+}

@@ -9,6 +9,7 @@ return {
                 'fzf-vim',
                 winopts = {
                     backdrop = 80,
+                    -- width = 80,
                     border = 'single',
                     preview = {
                         hidden = true

@@ -99,7 +99,7 @@ return {
                         min_width = 10,
                         max_width = 80,
                         max_height = 15,
-                        border = 'single',
+                        border = 'none',
                         winblend = 0,
                         scrollbar = true,
                     },
@@ -107,7 +107,7 @@ return {
                 menu = {
                     auto_show = true,
                     auto_show_delay_ms = 0,
-                    border = 'single',
+                    border = 'none',
 
                     winhighlight =
                     'Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None',

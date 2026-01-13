@@ -25,8 +25,10 @@ local function toggle_terminal()
     if terminal_state.winid
         and vim.api.nvim_win_is_valid(terminal_state.winid)
     then
+        local bufnr = vim.api.nvim_win_get_buf(terminal_state.winid)
         vim.api.nvim_win_close(terminal_state.winid, true)
         terminal_state.winid = nil
+        vim.api.nvim_buf_delete(bufnr, { force = true })
         return
     end
 
@@ -41,6 +43,8 @@ local function toggle_terminal()
     then
         vim.api.nvim_win_set_buf(0, terminal_state.bufnr)
     else
+        local cwd = vim.fn.expand("%:p:h")
+        vim.cmd("lcd " .. cwd)
         vim.cmd("terminal")
         terminal_state.bufnr = vim.api.nvim_get_current_buf()
     end

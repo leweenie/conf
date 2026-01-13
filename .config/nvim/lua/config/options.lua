@@ -1,6 +1,10 @@
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.completefunc = 'syntaxcomplete#Complete'
 vim.opt.number = true
+
+-- vim.opt.list = true
+-- vim.opt.listchars:append({ lead = '⋅' })
+
 vim.opt.relativenumber = false
 vim.opt.cmdheight = 1
 vim.opt.numberwidth = 3
@@ -9,7 +13,11 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.laststatus = 3
 vim.opt.hlsearch = false
-vim.opt.fillchars:append({ eob = " " })
+vim.opt.fillchars:append({ eob = "~" })
+
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
@@ -29,7 +37,7 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "110"
-vim.opt.showmode = false
+vim.opt.showmode = true
 
 vim.opt.backspace = "indent,eol,start"
 vim.opt.iskeyword:append("-")

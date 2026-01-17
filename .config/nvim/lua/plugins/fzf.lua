@@ -12,7 +12,10 @@ return {
                     -- width = 80,
                     border = 'single',
                     preview = {
-                        hidden = true
+                        hidden = false,
+                        border = 'single',
+                        scrollbar = false,
+                        horizontal = "right:50%"
                     }
                 },
                 keymap = {
@@ -38,6 +41,8 @@ return {
                 opts)
             vim.keymap.set('n', '<leader>f.', function() require('fzf-lua').files({}) end, opts)
             vim.keymap.set('n', '<leader>fb', function() require('fzf-lua').buffers({}) end, opts)
+            vim.keymap.set('n', '<leader>g.',
+                function() require('fzf-lua').grep_project({ search = vim.fn.expand("<cword>") }) end, opts)
         end
     }
 }

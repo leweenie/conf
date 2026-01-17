@@ -1,7 +1,7 @@
 return {
     { "tpope/vim-surround",    enabled = true, config = function() end, },
     { 'mbbill/undotree',       enabled = true },
-    { "windwp/nvim-autopairs", enabled = true, dependencies = { { "echasnovski/mini.icons", opts = {} } }, event = "InsertEnter", config = true, },
+    { "windwp/nvim-autopairs", enabled = true, dependencies = {},       event = "InsertEnter", config = true, },
     {
         "j-hui/fidget.nvim",
         enabled = true,
@@ -50,7 +50,7 @@ return {
                     ignore_focus = {},
                     always_divide_middle = true,
                     always_show_tabline = true,
-                    globalstatus = false,
+                    globalstatus = true,
                     refresh = {
                         statusline = 1000,
                         tabline = 1000,
@@ -101,7 +101,7 @@ return {
             require("bento").setup({
                 ordering_metric = "edit",
                 ui = {
-                    mode = "floating",
+                    mode = "tabline",
                     floating = {
                         position = "middle-right",
                         border = "single"

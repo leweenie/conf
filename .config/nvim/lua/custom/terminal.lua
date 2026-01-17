@@ -1,5 +1,6 @@
 local valid_types = {
     cpp = true,
+    go = true,
     rust = true,
     python = true,
     java = true,

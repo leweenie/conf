@@ -15,7 +15,8 @@ return {
                     border = 'single',
                     padding = 2,
                     max_width = 0.6,
-                    max_height = 0.5
+                    max_height = 0.5,
+                    preview_split = "auto",
                 },
                 confirmation = {
                     border = 'single',

@@ -13,7 +13,7 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.laststatus = 3
 vim.opt.hlsearch = false
-vim.opt.fillchars:append({ eob = "~" })
+vim.opt.fillchars:append({ eob = " " })
 
 vim.opt.wrap = true
 vim.opt.linebreak = true

@@ -688,13 +688,13 @@ function M.setup(config)
         ordering_metric = "access",                 -- nil (arbitrary) | "access" | "edit"
 
         ui = {
-            mode = "floating", -- "floating" | "tabline"
+            mode = "tabline", -- "floating" | "tabline"
             floating = {
                 position = "middle-right",
                 offset_x = 0,
                 offset_y = 0,
                 dash_char = "─",
-                border = "none",            -- "rouned" | "single" | "double" | etc. (see :h winborder)
+                border = "none",            -- "rounded" | "single" | "double" | etc. (see :h winborder)
                 label_padding = 1,
                 minimal_menu = nil,         -- nil | "dashed" | "filename" | "full"
                 max_rendered_buffers = nil, -- nil (no limit) or number

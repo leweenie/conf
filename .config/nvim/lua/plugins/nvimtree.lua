@@ -4,7 +4,7 @@ return {
         cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFileToggle" },
         dependencies = { "nvim-tree/nvim-web-devicons" },
 
-        opts = function()
+        config = function()
             require('nvim-tree').setup({
                 git = {
                     enable = false,
@@ -21,7 +21,8 @@ return {
                 },
 
                 view = {
-                    width = 80,
+                    width = 30,
+                    side = "right",
                     preserve_window_proportions = true,
                 },
                 renderer = {

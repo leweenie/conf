@@ -1,8 +1,8 @@
 [general]
-import = ["~/.config/alacritty/tokyodark.toml"]
+import = ["~/.config/alacritty/tokyonight-night.toml"]
 
 [window]
-# opacity = 0.95
+opacity = 0.95
 
 [font]
 size = 15.5

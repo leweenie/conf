@@ -36,7 +36,7 @@ end)
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-vim.cmd("cnoreabbrev q qa")
+-- vim.cmd("cnoreabbrev q qa")
 
 map("n", "<leader>tp", ":TypstPreview<CR>", opts)
 
@@ -82,14 +82,10 @@ map('n', "<leader>ln", function()
     end
 end, opts)
 
-vim.keymap.set("n", "<C-p>", function()
+map("n", "<C-p>", function()
     vim.cmd("NvimTreeFindFileToggle")
 end, opts)
 
-vim.keymap.set("n", "K", function()
-    vim.lsp.buf.hover({
-        border = "single",
-        width = 60,
-        vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#ebdbb2" })
-    })
+map('n', "<leader>bd", function()
+    vim.cmd("bp | bd #")
 end, opts)

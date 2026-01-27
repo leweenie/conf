@@ -53,15 +53,16 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+semicolon split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle global
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+p layout toggle split
+# bindsym $mod+p layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+w floating toggle
@@ -70,7 +71,7 @@ bindsym $mod+Shift+w floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+a focus parent 
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -155,7 +156,7 @@ bar {
 
 # startup
 exec_always --no-startup-id picom
-exec_always --no-startup-id feh --bg-max ~/downloads/wallpapers/nge-color.jpg
+exec_always --no-startup-id feh --bg-max ~/downloads/wallpapers/terry.jpg
 exec_always --no-startup-id xset r rate 250 50
 exec_always --no-startup-id brightnessctl s 100%
 exec_always --no-startup-id dunst
@@ -168,13 +169,13 @@ bindsym $mod+Shift+s exec flameshot gui
 bindsym $mod+Shift+f exec firefox
 bindsym $alt+Control+w bar mode toggle
 bindsym $alt+l exec --no-startup-id i3lock -c 000000
-bindsym $mod+Shift+d exec --no-startup-id krita $HOME/pictures/sketch.kra
 
 # i3 options
-default_border pixel 1
+default_border normal 1
 workspace_layout tabbed
-gaps inner 5
-# class                 border  backgr. text    indicator child_border
-# client.focused          #4c7899 #285577 #ffffff #2e9ef4   #404040
-# client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-# client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+gaps inner 3
+
+# class                   border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #404040
+client.focused_inactive #333333 #222222 #888888 #292d2e   #222222
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222

@@ -7,7 +7,7 @@ return {
         config = function()
             require 'typst-preview'.setup {
                 debug = false,
-                open_cmd = "nohup google-chrome-stable %s",
+                open_cmd = "nohup chromium %s",
                 port = 0,
                 invert_colors = 'never',
                 follow_cursor = true,

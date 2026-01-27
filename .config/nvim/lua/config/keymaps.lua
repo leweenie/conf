@@ -29,20 +29,14 @@ end)
 map("n", "<C-n>", function()
     vim.diagnostic.jump({ count = 1, float = true })
 end)
-map("n", "<C-S-n>", function()
+map("n", "<C-p>", function()
     vim.diagnostic.jump({ count = -1, float = true })
 end)
 
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- vim.cmd("cnoreabbrev q qa")
-
 map("n", "<leader>tp", ":TypstPreview<CR>", opts)
-
-map("n", "<leader>bf", function()
-    vim.lsp.buf.format({ async = true })
-end, opts)
 
 local text_on = false
 map("n", "<leader>lt", function()
@@ -57,10 +51,10 @@ end)
 
 map('t', "<esc><esc>", "<C-\\><C-N>", opts)
 
-local flag = true
+local flag1 = true
 map('n', "<C-S-Up>", function()
-    flag = not flag
-    if flag then
+    flag1 = not flag1
+    if flag1 then
         vim.opt.cmdheight = 1
     else
         vim.opt.cmdheight = 0
@@ -73,19 +67,29 @@ map('n', '<leader>u', ":UndotreeToggle<cr>", opts)
 
 map('n', '<C-l>', ":noh<cr>", opts)
 
+local flag2 = false
 map('n', "<leader>ln", function()
-    flag = not flag
-    if flag then
+    flag2 = not flag2
+    if flag2 then
         vim.opt.number = false
     else
         vim.opt.number = true
     end
 end, opts)
 
-map("n", "<C-p>", function()
-    vim.cmd("NvimTreeFindFileToggle")
-end, opts)
-
 map('n', "<leader>bd", function()
     vim.cmd("bp | bd #")
 end, opts)
+
+local zoomed = false
+map("n", "<leader>o", function()
+    zoomed = not zoomed
+
+    if zoomed then
+        vim.cmd("wincmd _")
+        vim.cmd("wincmd |")
+    else
+        vim.cmd("wincmd =")
+    end
+end, opts)
+

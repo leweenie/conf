@@ -11,7 +11,7 @@ vim.opt.numberwidth = 3
 vim.opt.spelllang = "en"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
-vim.opt.laststatus = 3
+vim.opt.laststatus = 2
 vim.opt.hlsearch = false
 vim.opt.fillchars:append({ eob = " " })
 
@@ -36,7 +36,7 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
-vim.opt.colorcolumn = "110"
+-- vim.opt.colorcolumn = "150"
 vim.opt.showmode = true
 
 vim.opt.backspace = "indent,eol,start"

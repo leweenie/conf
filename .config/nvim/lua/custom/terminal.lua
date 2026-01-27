@@ -5,6 +5,7 @@ local valid_types = {
     python = true,
     java = true,
     javascript = true,
+    typescript = true,
     c = true,
     terminal = true,
 }
@@ -36,6 +37,10 @@ local function toggle_terminal()
     local height = vim.api.nvim_win_get_height(0)
     vim.cmd("split")
     vim.cmd("resize " .. math.floor(height / 3))
+
+    -- local width = vim.api.nvim_win_get_width(0)
+    -- vim.cmd("vsplit")
+    -- vim.cmd("vertical resize " .. math.floor(width / 2.2))
 
     terminal_state.winid = vim.api.nvim_get_current_win()
 

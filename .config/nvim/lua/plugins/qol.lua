@@ -13,7 +13,7 @@ return {
     },
     {
         "lukas-reineke/indent-blankline.nvim",
-        enabled = true,
+        enabled = false,
         priority = 3,
         main = "ibl",
         config = function()

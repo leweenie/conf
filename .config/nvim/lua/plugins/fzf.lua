@@ -10,14 +10,15 @@ return {
                     backdrop = 80,
                     border = 'single',
                     preview = {
-                        hidden = false,
+                        hidden = true,
                         border = 'single',
                         scrollbar = false,
                         horizontal = "right:50%"
                     }
                 },
                 oldfiles = { prompt = "" },
-                live_grep = { prompt = "" },
+                live_grep = { prompt = "", },
+                grep = { prompt = "" },
                 helptags = { prompt = "" },
                 colorschemes = { prompt = "" },
             })

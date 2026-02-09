@@ -6,6 +6,7 @@ local valid_types = {
     java = true,
     javascript = true,
     typescript = true,
+    asm = true,
     c = true,
     terminal = true,
 }

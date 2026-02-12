@@ -41,6 +41,7 @@ return {
             hl(0, "FzfLuaBorder", { fg = "#282833" })
             hl(0, "BlinkCmpDocBorder", { fg = "#282833" })
             hl(0, "FloatBorder", { fg = "#282833" })
+            hl(0, "CursorLine", { bg = "NONE" })
         end
     },
 }

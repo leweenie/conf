@@ -13,7 +13,7 @@ return {
     },
     {
         "lukas-reineke/indent-blankline.nvim",
-        enabled = false,
+        enabled = true,
         priority = 3,
         main = "ibl",
         config = function()
@@ -37,5 +37,33 @@ return {
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
         opts = {},
+    },
+    {
+        "ARM9/arm-syntax-vim",
+        enabled = false,
+    },
+    {
+        'lewis6991/gitsigns.nvim',
+        enabled = true,
+        opts = {
+            signs = {
+                add = { text = '+' },
+                change = { text = '~' },
+                delete = { text = '_' },
+                topdelete = { text = '‾' },
+                changedelete = { text = '~' },
+            },
+        },
+    },
+    {
+        'goolord/alpha-nvim',
+        enabled = true,
+        dependencies = {
+            'nvim-mini/mini.icons',
+            'nvim-lua/plenary.nvim'
+        },
+        config = function()
+            require 'alpha'.setup(require 'alpha.themes.theta'.config)
+        end
     },
 }

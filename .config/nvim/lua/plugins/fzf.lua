@@ -4,23 +4,33 @@ return {
         enabled = true,
         opts = {},
         config = function()
+            local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = "FzfLuaNormal" })
+            hl = ok and hl or {}
+
+            local bg = hl.bg or vim.api.nvim_get_hl(0, { name = "Normal" }).bg or 0x1e1e1e
+            local fg = hl.fg or vim.api.nvim_get_hl(0, { name = "Normal" }).fg or 0xffffff
             require('fzf-lua').setup({
-                'fzf-vim',
-                winopts = {
-                    backdrop = 80,
-                    border = 'single',
-                    preview = {
-                        hidden = true,
-                        border = 'single',
-                        scrollbar = false,
-                        horizontal = "right:50%"
-                    }
+                fzf_colors = {
+                    ["gutter"] = string.format("#%06x", bg),
+                    ["pointer"] = string.format("#%06x", fg),
+                    ["bg+"] = "-1",
                 },
-                oldfiles = { prompt = "" },
-                live_grep = { prompt = "", },
-                grep = { prompt = "" },
-                helptags = { prompt = "" },
-                colorschemes = { prompt = "" },
+                winopts = {
+                    height  = 0.90,
+                    width   = 0.90,
+                    border  = "single",
+                    preview = {
+                        hidden = false,
+                        border = "single",
+                        scrollbar = false,
+                        horizontal = "right:58%",
+                    },
+                },
+                oldfiles = { prompt = "$ " },
+                live_grep = { prompt = "$ ", },
+                grep = { prompt = "$ " },
+                helptags = { prompt = "$ " },
+                colorschemes = { prompt = "$ " },
             })
             -- $HOME
             vim.keymap.set('n', '<leader>ff', function()
@@ -50,6 +60,7 @@ return {
             vim.keymap.set('n', '<leader>fc', function() require('fzf-lua').files({ cwd = '$HOME/.config/nvim' }) end)
             vim.keymap.set('n', '<leader>fh', function() require('fzf-lua').helptags({}) end)
             vim.keymap.set('n', '<leader>cs', function() require('fzf-lua').colorschemes({}) end)
+            vim.keymap.set('n', '<leader>gw', function() require('fzf-lua').grep_cword({}) end)
         end
     }
 }

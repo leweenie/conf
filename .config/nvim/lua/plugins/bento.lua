@@ -1,7 +1,15 @@
 return {
     {
-        "serhez/bento.nvim",
+        'nvim-mini/mini.nvim',
         enabled = true,
+        version = false,
+        config = function()
+            require('mini.tabline').setup()
+        end
+    },
+    {
+        "serhez/bento.nvim",
+        enabled = false,
         opts = {},
         config = function()
             require("bento").setup({

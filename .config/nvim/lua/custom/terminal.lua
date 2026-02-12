@@ -6,9 +6,10 @@ local valid_types = {
     java = true,
     javascript = true,
     typescript = true,
-    asm = true,
     c = true,
     terminal = true,
+    arm = true,
+    asm = true,
 }
 
 local terminal_state = {

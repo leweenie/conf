@@ -33,8 +33,8 @@ map("n", "<C-p>", function()
     vim.diagnostic.jump({ count = -1, float = true })
 end)
 
-map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+-- map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+-- map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 map("n", "<leader>tp", ":TypstPreview<CR>", opts)
 
@@ -93,3 +93,9 @@ map("n", "<leader>o", function()
     end
 end, opts)
 
+vim.keymap.set("n", "K", function()
+    vim.lsp.buf.hover({
+        border = "single",
+        -- max_width = 60,
+    })
+end, { desc = "LSP Hover" })

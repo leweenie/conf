@@ -1,6 +1,6 @@
 return {
     "sphamba/smear-cursor.nvim",
-    enabled = true,
+    enabled = false,
     config = function()
         require('smear_cursor').setup({
             smear_between_buffers = true,

@@ -46,19 +46,21 @@ return {
         'lewis6991/gitsigns.nvim',
         enabled = true,
         opts = {
-            signs = {
-                add = { text = '+' },
-                change = { text = '~' },
-                delete = { text = '-' },
-                topdelete = { text = '‾' },
-                changedelete = { text = '~' },
-            },
         },
         config = function()
+            local gitsigns = require 'gitsigns'
+            gitsigns.setup({
+                signs = {
+                    add = { text = '+' },
+                    change = { text = '~' },
+                    delete = { text = '_' },
+                    topdelete = { text = '‾' },
+                    changedelete = { text = '~' },
+                },
+            })
             vim.g.mapleader = " "
             vim.g.maplocalleader = " "
             local map = vim.keymap.set
-            local gitsigns = require 'gitsigns'
             map('v', '<leader>ss', function() gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end) -- stage selection
             map('v', '<leader>su', function() gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end) -- reset selection
             map('v', '<leader>rs', function() gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end)

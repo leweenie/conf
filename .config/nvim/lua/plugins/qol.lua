@@ -49,11 +49,39 @@ return {
             signs = {
                 add = { text = '+' },
                 change = { text = '~' },
-                delete = { text = '_' },
+                delete = { text = '-' },
                 topdelete = { text = '‾' },
                 changedelete = { text = '~' },
             },
         },
+        config = function()
+            vim.g.mapleader = " "
+            vim.g.maplocalleader = " "
+            local map = vim.keymap.set
+            local gitsigns = require 'gitsigns'
+            map('v', '<leader>ss', function() gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end) -- stage selection
+            map('v', '<leader>su', function() gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end) -- reset selection
+            map('v', '<leader>rs', function() gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end)
+
+            map('n', '<leader>ss', gitsigns.stage_hunk) -- stage hunk
+            map('n', '<leader>su', gitsigns.stage_hunk) -- reset hunk
+            map('n', '<leader>rs', gitsigns.reset_hunk)
+
+            map('n', '<leader>sb', gitsigns.stage_buffer)
+            map('n', '<leader>rb', gitsigns.reset_buffer_index)
+
+            map('n', '<leader>hn', function()
+                gitsigns.next_hunk()
+                gitsigns.preview_hunk_inline()
+            end)
+
+            map('n', '<leader>hp', function()
+                gitsigns.prev_hunk()
+                gitsigns.preview_hunk_inline()
+            end)
+
+            map('n', '<leader>hd', gitsigns.diffthis)
+        end
     },
     {
         'goolord/alpha-nvim',

@@ -38,7 +38,7 @@ end)
 
 map("n", "<leader>tp", ":TypstPreview<CR>", opts)
 
-local text_on = false
+local text_on = true
 map("n", "<leader>lt", function()
     text_on = not text_on
     vim.diagnostic.config({ virtual_text = text_on })

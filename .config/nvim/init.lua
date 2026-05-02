@@ -1,0 +1,12 @@
+require("custom.terminal")
+require("config.options")
+require("config.keymaps")
+require("config.lazy")
+require("config.autocmds")
+
+-- vim.cmd.colorscheme("retrobox")
+-- vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
+-- vim.api.nvim_set_hl(0, "FzfLuaBorder", { fg = "#1c1c1c", bg = "#1c1c1c" })
+-- vim.api.nvim_set_hl(0, "FzfLuaBorder", { fg = "#3c3836", bg = "NONE" })
+-- vim.api.nvim_set_hl(0, "Visual", { fg = "NONE", bg = "#303030" })
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })

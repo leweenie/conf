@@ -23,14 +23,14 @@ map("n", "<C-u>", "<C-u>zz", opts)
 map("n", "<C-d>", "<C-d>zz", opts)
 
 map("n", "<leader>e", function()
-    require("oil").open()
+	require("oil").open()
 end)
 
 map("n", "<C-n>", function()
-    vim.diagnostic.jump({ count = 1, float = true })
+	vim.diagnostic.jump({ count = 1, float = true })
 end)
 map("n", "<C-p>", function()
-    vim.diagnostic.jump({ count = -1, float = true })
+	vim.diagnostic.jump({ count = -1, float = true })
 end)
 
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -40,25 +40,25 @@ map("n", "<leader>tp", ":TypstPreview<CR>", opts)
 
 local text_on = true
 map("n", "<leader>lt", function()
-    text_on = not text_on
-    vim.diagnostic.config({ virtual_text = text_on })
-    if text_on then
-        print("diagnostics on")
-    else
-        print("diagnostics off")
-    end
+	text_on = not text_on
+	vim.diagnostic.config({ virtual_text = text_on })
+	if text_on then
+		print("diagnostics on")
+	else
+		print("diagnostics off")
+	end
 end)
 
 map('t', "<esc><esc>", "<C-\\><C-N>", opts)
 
 local flag1 = true
 map('n', "<C-S-Up>", function()
-    flag1 = not flag1
-    if flag1 then
-        vim.opt.cmdheight = 1
-    else
-        vim.opt.cmdheight = 0
-    end
+	flag1 = not flag1
+	if flag1 then
+		vim.opt.cmdheight = 1
+	else
+		vim.opt.cmdheight = 0
+	end
 end, opts)
 
 map({ 'n', 'v' }, '<A-S-j>', ":t.<cr>", opts)
@@ -69,44 +69,42 @@ map('n', '<C-l>', ":noh<cr>", opts)
 
 local flag2 = false
 map('n', "<leader>ln", function()
-    flag2 = not flag2
-    if flag2 then
-        vim.opt.number = false
-    else
-        vim.opt.number = true
-    end
+	flag2 = not flag2
+	if flag2 then
+		vim.opt.number = false
+	else
+		vim.opt.number = true
+	end
 end, opts)
 
-map('n', "<leader>bd", function()
-    vim.cmd("bp | bd #")
-end, opts)
+map('n', "<leader>bd", "<cmd>bd!<cr>", opts)
 
 local zoomed = false
 map("n", "<leader>o", function()
-    zoomed = not zoomed
+	zoomed = not zoomed
 
-    if zoomed then
-        vim.cmd("wincmd _")
-        vim.cmd("wincmd |")
-    else
-        vim.cmd("wincmd =")
-    end
+	if zoomed then
+		vim.cmd("wincmd _")
+		vim.cmd("wincmd |")
+	else
+		vim.cmd("wincmd =")
+	end
 end, opts)
 
 map("n", "K", function()
-    vim.lsp.buf.hover({
-        border = "none",
-    })
+	vim.lsp.buf.hover({
+		border = "rounded",
+	})
 end)
 
-map("n", "<leader>r", ":restart<cr>")
+-- map("n", "<leader>r", ":restart<cr>")
 
-vim.keymap.set("n", "<leader>n", function()
-    local file = vim.fn.input("Enter filename: ")
-    if file == "" then return end
-
-    local parent = vim.fn.expand("%:p:h")
-    local path = parent .. "/" .. file
-
-    vim.cmd("edit " .. path)
-end)
+-- vim.keymap.set("n", "<leader>n", function()
+--     local file = vim.fn.input("Enter filename: ")
+--     if file == "" then return end
+--
+--     local parent = vim.fn.expand("%:p:h")
+--     local path = parent .. "/" .. file
+--
+--     vim.cmd("edit " .. path)
+-- end)

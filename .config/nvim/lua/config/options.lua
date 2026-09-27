@@ -2,13 +2,18 @@ vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.completefunc = 'syntaxcomplete#Complete'
 vim.opt.number = true
 
-vim.opt.relativenumber = false
+vim.opt.list = false
+vim.opt.listchars = {
+	tab = "» ",
+}
+
+vim.opt.relativenumber = true
 vim.opt.cmdheight = 1
 vim.opt.numberwidth = 3
 vim.opt.spelllang = "en"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 vim.opt.hlsearch = false
 vim.opt.fillchars:append({ eob = "~" })
 
@@ -22,7 +27,8 @@ vim.opt.splitbelow = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
-vim.opt.expandtab = true
+
+vim.opt.expandtab = false
 vim.opt.smartindent = true
 vim.opt.autoindent = true
 

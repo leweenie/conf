@@ -18,7 +18,7 @@ return {
                     mode = "tabline",
                     floating = {
                         position = "middle-right",
-                        border = "single"
+                        border = "rounded"
                     },
                 },
                 highlights = {

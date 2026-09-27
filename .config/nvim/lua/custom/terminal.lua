@@ -11,6 +11,8 @@ local valid_types = {
     arm = true,
     asm = true,
     make = true,
+    typescriptreact = true,
+    javascriptreact = true,
 }
 
 local terminal_state = {
